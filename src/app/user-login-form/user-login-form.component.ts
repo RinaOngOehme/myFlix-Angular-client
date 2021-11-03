@@ -33,9 +33,9 @@ export class UserLoginFormComponent implements OnInit {
 
       // Logic for successful user login
       this.dialogRef.close();
-      console.log(this.userData)
+      console.log(response)
 
-      // Set username and password for locall storage
+      // Set username and password for local storage
       localStorage.setItem('username', this.userData.Username);
       localStorage.setItem('token', response.token);
 
