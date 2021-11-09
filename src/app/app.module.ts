@@ -10,19 +10,51 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { RouterModule, Routes } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MovieDirectorComponent } from './movie-director/movie-director.component';
+import { MovieGenreComponent } from './movie-genre/movie-genre.component';
+import { MovieSynopsisComponent } from './movie-synopsis/movie-synopsis.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserFavoritesComponent } from './user-favorites/user-favorites.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
+import { UserDeleteComponent } from './user-delete/user-delete.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+
+const appRoutes: Routes = [
+  { path: 'welcome', component: WelcomePageComponent },
+  { path: 'movies', component: MovieCardComponent },
+  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
+];
+
 
 @NgModule({
   declarations: [
     AppComponent,
     UserRegistrationFormComponent,
-    UserLoginFormComponent
+    UserLoginFormComponent,
+    MovieCardComponent,
+    WelcomePageComponent,
+    MovieDirectorComponent,
+    MovieGenreComponent,
+    MovieSynopsisComponent,
+    UserProfileComponent,
+    UserFavoritesComponent,
+    UserEditComponent,
+    UserDeleteComponent,
+    NavBarComponent
   ],
   imports: [
+    RouterModule.forRoot(appRoutes),
+    MatIconModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -34,7 +66,8 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
