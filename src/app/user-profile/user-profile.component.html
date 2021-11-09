@@ -1,0 +1,18 @@
+<div class="user-profile">
+  <h2>{{user.Username}}'s Profile</h2>
+  <div>
+    <p>Username: {{user.Username}}</p>
+    <p>Email: {{user.Email}}</p>
+    <p>Birthday: {{user.Birthday}}</p>
+    <button mat-raised-button class="btn" (click)="openUserDelete()">
+      Delete Profile
+    </button>
+    <button mat-raised-button class="btn" (click)="openUserEdit()">
+      Edit Profile
+    </button>
+  </div>
+  <div>
+    <h2>{{user.Username}}'s Favorites</h2>
+
+  </div>
+</div>
