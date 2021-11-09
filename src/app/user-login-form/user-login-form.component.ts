@@ -9,6 +9,9 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
@@ -22,13 +25,14 @@ export class UserLoginFormComponent implements OnInit {
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
     public snackBar: MatSnackBar,
+    public router: Router,
   ) { }
 
   ngOnInit(): void {
   }
   // This is the function responsible for sending the form inputs to the backend
   userLogin(): void {
-
+    this.router.navigate(['movies']);
     this.fetchApiData.userLogin(this.userData).subscribe((response) => {
 
       // Logic for successful user login
@@ -39,11 +43,14 @@ export class UserLoginFormComponent implements OnInit {
       localStorage.setItem('username', this.userData.Username);
       localStorage.setItem('token', response.token);
 
+
+
+
       // to redirect 
       this.snackBar.open(this.userData.Username, 'Welcome back!', {
         duration: 3000
       });
-
+      this.router.navigate(['movies']);
     }, (response) => {
 
       this.snackBar.open(response, 'OK', {
