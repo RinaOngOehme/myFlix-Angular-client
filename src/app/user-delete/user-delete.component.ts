@@ -29,7 +29,7 @@ export class UserDeleteComponent implements OnInit {
 
 
   deleteUser(): void {
-    this.fetchApiData.deleteUser().subscribe(() => {
+    this.fetchApiData.deleteUser(localStorage.getItem('user')).subscribe(() => {
       //upon success, this code runs to navigate to welcome screen and close the dialog
       this.dialogRef.close()
       localStorage.clear();
