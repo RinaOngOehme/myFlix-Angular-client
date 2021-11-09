@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-header class="delete-account-container">
+    <mat-card-title class="delete-account-title">Delete Account</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Once the account is deleted, it cannot be recovered.
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="deleteUser()" color="primary">
+      Delete Account
+    </button>
+    <button mat-raised-button (click)="dontDelete()" color="primary">
+      Cancel
+    </button>
+  </mat-card-actions>
+</mat-card>
