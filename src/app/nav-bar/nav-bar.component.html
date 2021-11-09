@@ -1,0 +1,15 @@
+<mat-toolbar>
+  <span>myFlix </span>
+  <span class="top-nav"></span>
+  <button class="nav-btn" mat-button routerLink="/welcome-page" color="primary">
+    Home </button>
+  <button class="nav-btn" mat-button routerLink="/movie-card" color="primary">
+    Movies
+  </button>
+  <button class="nav-btn" mat-button routerLink="/user-profile" color='primary'>
+    Profile
+  </button>
+  <button class="nav-btn" mat-button (click)="signOut()" color="primary">
+    Log out
+  </button>
+</mat-toolbar>
