@@ -29,33 +29,44 @@ export class UserFavoritesComponent implements OnInit {
   }
 
 
+  filterFavorites(): void {
+    this.favorites = this.movies.filter((movie: any) => this.user.FavoriteMovies.includes(movie.Title));
+    return this.favorites;
+  }
+
   getFavorites(): void {
     this.fetchApiData.getUser(this.user).subscribe((results) => {
       //get favorites to the favorites array
       this.favorites = results.Favorites;
-    })
+      return this.filterFavorites();
+
+    }
+
+    )
   }
 
-  openGenreDialog(genre: any): void {
+
+
+  openGenreDialog(Name: string, Description: string): void {
     this.dialog.open(MovieGenreComponent, {
       width: "500px",
       //data will be passed to the Genre component
       data: {
-        genre: genre.Name,
-        description: genre.Description,
+        genre: Name,
+        description: Description,
       }
     });
   }
 
 
-  openDirectorDialog(director: any): void {
+  openDirectorDialog(Name: string, Bio: string, Birthyear: any): void {
     this.dialog.open(MovieDirectorComponent, {
       width: "500px",
       //data will be passed to the Director component
       data: {
-        name: director.Name,
-        bio: director.Bio,
-        birthyear: director.Birthyear,
+        name: Name,
+        bio: Bio,
+        birthyear: Birthyear,
       }
     });
   }
