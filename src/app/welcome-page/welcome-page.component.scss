@@ -1,13 +1,40 @@
-* {
-  background-color: black;
-  color: white;
-}
 
-.main-page {
+.main-page { 
+  background-color: lightgrey;
+  color: blue;  
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.logo {
+  width: 70%;
+  height: 35%;
+  display: flex;
+}
+
+.signup
+{
+  background-color: orange;
+  color: black;
+  margin-top: 10px;  
+  padding: 10px;
+  width: 20%;
+  height: 8%;
+  align-items: center;
+  justify-content: center;
+}
+
+.login{
+  background-color: blue;
+  color: white;
+  margin-top: 10px;
+  align-items: center;
+  padding: 10px;
+  width: 20%;
+  height: 8%;
+  justify-content: center;
 }
