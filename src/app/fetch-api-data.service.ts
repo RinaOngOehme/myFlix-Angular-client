@@ -7,6 +7,8 @@ import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
 const apiUrl = 'https://myflixdb9278.herokuapp.com/';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,9 +18,9 @@ export class FetchApiDataService {
   constructor(private http: HttpClient) {
   }
   // Making the api call for the user registration endpoint
-  public userRegistration(userDetails: any): Observable<any> {
-    console.log(userDetails);
-    return this.http.post(apiUrl + 'users', userDetails).pipe(
+  public userRegistration(userData: any): Observable<any> {
+    console.log(userData);
+    return this.http.post(apiUrl + 'users', userData).pipe(
       catchError(this.handleError)
     );
   }
@@ -33,9 +35,11 @@ export class FetchApiDataService {
 
 
 
+
   // Gets all movie objects from database
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
+
     return this.http.get(apiUrl + 'movies', {
       headers: new HttpHeaders(
         {
@@ -106,7 +110,6 @@ export class FetchApiDataService {
   //Get user details
   getFavorites(user: any): Observable<any> {
     const token = localStorage.getItem('token');
-
     return this.http.get(apiUrl + 'users/' + user, {
       headers: new HttpHeaders(
         {
@@ -136,6 +139,7 @@ export class FetchApiDataService {
   //Edit user details
   updateUser(user: any): Observable<any> {
     const token = localStorage.getItem('token');
+
     return this.http.put(apiUrl + 'users/' + user, {
       headers: new HttpHeaders(
         {
@@ -150,6 +154,7 @@ export class FetchApiDataService {
   //Delete user details
   deleteUser(user: any): Observable<any> {
     const token = localStorage.getItem('token');
+
     return this.http.delete(apiUrl + 'users/' + user, {
       headers: new HttpHeaders(
         {
@@ -193,6 +198,5 @@ export class FetchApiDataService {
     return throwError(
       'Something bad happened; please try again later.');
   }
+
 }
-
-
