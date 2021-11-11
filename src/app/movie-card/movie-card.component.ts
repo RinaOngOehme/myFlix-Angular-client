@@ -28,7 +28,7 @@ export class MovieCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovies();
-    this.getFavorites();
+    // this.getFavorites();
   }
 
   getMovies(): void {
