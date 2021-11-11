@@ -13,7 +13,7 @@ export class MovieSynopsisComponent implements OnInit {
     public dialogRef: MatDialogRef<MovieSynopsisComponent>,
     @Inject(MAT_DIALOG_DATA)
 
-    public movie: {
+    public data: {
       Title: string;
       Description: string
     },
