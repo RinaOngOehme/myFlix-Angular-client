@@ -29,11 +29,11 @@ export class UserDeleteComponent implements OnInit {
 
 
   deleteUser(): void {
-    this.fetchApiData.deleteUser(localStorage.getItem('user')).subscribe(() => {
+    this.fetchApiData.deleteUser(localStorage.getItem('username')).subscribe(() => {
       //upon success, this code runs to navigate to welcome screen and close the dialog
       this.dialogRef.close()
       localStorage.clear();
-      this.router.navigate(["welcome"]);
+      this.router.navigate(['welcome']);
       this.snackBar.open("Sorry That You Are Leaving Us, Your Account Has Been Deleted!", "OK", {
         duration: 2000
       })
