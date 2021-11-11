@@ -9,14 +9,14 @@ import { MatDialogRef } from "@angular/material/dialog";
   styleUrls: ['./movie-genre.component.scss']
 })
 export class MovieGenreComponent implements OnInit {
-  genre: any[] = [];
+
+
 
   constructor(
-
     public dialogRef: MatDialogRef<MovieGenreComponent>,
     @Inject(MAT_DIALOG_DATA)
 
-    public data: {
+    public genre: {
       Name: string;
       Description: string;
     }
