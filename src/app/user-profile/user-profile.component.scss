@@ -1,0 +1,65 @@
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: 25px;
+  margin-right: 25px;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: white;
+  margin: 0 auto;
+  width:100%;
+  padding: 20px;  
+ 
+}
+
+.del-btn{
+  margin-right: 5px;
+  background-color: red;
+  color: white;
+  margin-top: 10px;
+  align-items: center;
+ text-align: center;
+  width: 30%;
+  height: 20%;
+  justify-content: center;
+}
+
+.edit-btn{
+  background-color: blue;
+  margin-right: 5px;
+  color: white;
+  margin-top: 10px;
+  align-items: center;
+  text-align: center;
+  width: 30%;
+  height: 20%;
+  justify-content: center;
+}
+
+.cancel-btn{
+  background-color: gray;
+  color: white;
+  margin-right: 10px;
+  margin-top: 10px;
+  align-items: center;
+  text-align: center;
+  width: 30%;
+  height: 20%;
+  justify-content: center;
+}
+
+.user-fav{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: 25px;
+  margin-right: 25px;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: white;
+  margin: 0 auto;
+  width:100%;
+  padding: 20px;  
+ 
+}
