@@ -1,18 +1,22 @@
+<app-nav-bar></app-nav-bar>
 <div class="user-profile">
-  <h2>{{user.Username}}'s Profile</h2>
+  <h2>Your Profile</h2>
   <div>
     <p>Username: {{user.Username}}</p>
     <p>Email: {{user.Email}}</p>
     <p>Birthday: {{user.Birthday}}</p>
-    <button mat-raised-button class="btn" (click)="openUserDelete()">
-      Delete Profile
+    <button mat-raised-button class="del-btn" (click)="openUserDelete()">
+      Delete
     </button>
-    <button mat-raised-button class="btn" (click)="openUserEdit()">
-      Edit Profile
+    <button mat-raised-button class="edit-btn" (click)="openUserEdit()">
+      Edit
+    </button>
+    <button mat-raised-button class="cancel-btn" (click)="cancel()">
+      Cancel
     </button>
   </div>
-  <div>
-    <h2>{{user.Username}}'s Favorites</h2>
-
+  <div class="user-fav">
+    <h2>Your Favorite Movies</h2>
+    <app-user-favorites></app-user-favorites>
   </div>
 </div>
