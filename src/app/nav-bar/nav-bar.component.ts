@@ -18,18 +18,28 @@ export class NavBarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.user()
+
   }
 
 
-  public getUser(): void {
-    this.user = localStorage.getItem('user');
-  }
+
+  //  navProfile(): void {
+  //  this.router.navigate(['/profile'])
+  //  .then(success => console.log('navigation success?', success))
+  //.catch(console.error);
+  //}
+
+  // navMovies(): void {
+  // this.router.navigate(['/movies'])
+  // .then(success => console.log('navigation success?', success))
+  // .catch(console.error);
+  //}
 
   // Log out user
-  signOut(): void {
-    localStorage.clear();
-    this.router.navigate(['Welcome']);
+  navSignOut(): void {
+    localStorage.removeItem('username');
+    localStorage.removeItem('token');
+    this.router.navigate(['/welcome']);
     this.snackBar.open('Logout successful!', 'OK', {
       duration: 3000
     });
