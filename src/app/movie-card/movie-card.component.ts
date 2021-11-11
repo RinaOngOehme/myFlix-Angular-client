@@ -14,6 +14,7 @@ import { MovieSynopsisComponent } from '../movie-synopsis/movie-synopsis.compone
   styleUrls: ['./movie-card.component.scss']
 })
 export class MovieCardComponent implements OnInit {
+
   movies: any[] = [];
   user: any[] = [];
   favorites: any[] = [];
@@ -31,6 +32,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   getMovies(): void {
+
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
       console.log(this.movies);
