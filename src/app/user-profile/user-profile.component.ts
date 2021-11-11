@@ -29,8 +29,8 @@ export class UserProfileComponent implements OnInit {
 
   getUser(): void {
     let user = localStorage.getItem('username');
-    this.fetchApiData.getUser(user).subscribe((res: any) => {
-      this.user = res;
+    this.fetchApiData.getUser(user).subscribe((response: any) => {
+      this.user = response;
     });
   }
 
@@ -65,9 +65,9 @@ export class UserProfileComponent implements OnInit {
 
   getFavorites(): void {
 
-    this.fetchApiData.getUser(this.user).subscribe((resp: any) => {
+    this.fetchApiData.getUser(this.user).subscribe((response: any) => {
       //get favorites to the favorites array
-      this.favorites = resp.Favorites;
+      this.favorites = response.Favorites;
       return this.favorites;
     })
   }
