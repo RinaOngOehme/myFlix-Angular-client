@@ -1,6 +1,6 @@
 * {
-  background-color: black;
-  color: white;
+  background-color: whitesmoke;
+  color: black;
 }
 
 .favorite-button {
@@ -9,7 +9,45 @@
 }
 
 .favorite-button-active {
-  float: right;
-  color: red;
+  float: right; 
   cursor: pointer;
+  color: red;
+}
+
+.mat-card {
+  
+  max-width: 300px;
+  margin: 10px;
+}
+
+.mat-card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.movie-image {
+  border-radius: 5px;
+    margin: 0 auto;
+    max-width: 100%;
+    height: 350px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.movie-card {
+  display: grid;  
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  background-color: darkblue;  
+  text-align: left;
+  align-items: stretch;
+  justify-items: center; 
+  padding-top: 10px;
+  
+}
+
+.mat-card-actions{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
