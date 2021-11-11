@@ -33,7 +33,7 @@ export class UserLoginFormComponent implements OnInit {
   }
   // This is the function responsible for sending the form inputs to the backend
   userLogin(): void {
-    this.router.navigate(['movies']);
+
     this.fetchApiData.userLogin(this.userData).subscribe((response) => {
 
       // Logic for successful user login
