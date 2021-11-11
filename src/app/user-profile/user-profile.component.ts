@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,8 +12,11 @@ import { UserDeleteComponent } from '../user-delete/user-delete.component';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
+  @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
+
   user: any = {};
-  favorites: any[] = [];
+  movies: any = [];
+  favorites: any = [];
 
 
   constructor(
@@ -25,26 +28,50 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
+
   }
 
   getUser(): void {
-    let user = localStorage.getItem('username');
-    this.fetchApiData.getUser(user).subscribe((response: any) => {
-      this.user = response;
+    const user = localStorage.getItem('user');
+    this.fetchApiData.getUser(user).subscribe((res: any) => {
+
+      this.user = res;
+      this.getMovies();
+    });
+  }
+  //getUser(): void {
+  //  let user = localStorage.getItem('username');
+  //  this.fetchApiData.getUser(user).subscribe((response: any) => {
+  //    this.user = response;
+  //  });
+  //}
+
+  getMovies(): void {
+    this.fetchApiData.getAllMovies().subscribe((res: any) => {
+      this.movies = res;
+      this.filterFavorites();
     });
   }
 
-  //this.fetchApiData.getUser(localStorage.getItem('username')).subscribe((results) => {
-  // console.log(results);
-  // cut off the unneeded part of the birthday
-  // const birthday = results.Birthday.slice(0, 10);
-  //assign the user variable
-  //this.user = {
-  // User: results.Username,
-  // Email: results.Email,
-  // Birthday: results.Birthday,
-  //}
-  //})
+  filterFavorites(): void {
+    this.movies.forEach((movie: any) => {
+      if (this.user.FavoriteMovies.includes(movie.Title)) {
+        this.favorites.push(movie);
+      }
+    });
+    return this.favorites;
+  }
+
+  removeFavorites(Title: string): void {
+    this.fetchApiData.removeFavoriteMovie(Title).subscribe(() => {
+      this.snackBar.open(`${Title} has been removed from your favorites!`, 'OK', {
+        duration: 2000
+      });
+      setTimeout(function () {
+        window.location.reload();
+      }, 2000);
+    });
+  }
   /**
     * Opens dialog used to edit user information
     */
@@ -63,21 +90,15 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  getFavorites(): void {
+  //getFavorites(): void {
 
-    this.fetchApiData.getUser(this.user).subscribe((response: any) => {
-      //get favorites to the favorites array
-      this.favorites = response.Favorites;
-      return this.favorites;
-    })
-  }
+  //this.fetchApiData.getUser(this.user).subscribe((response: any) => {
+  //get favorites to the favorites array
+  // this.favorites = response.Favorites;
+  // return this.favorites;
+  //})
+  //}
 
-
-  cancel(): void {
-    this.router.navigate(['/profile']).then(() => {
-      window.location.reload();
-    });
-  }
 
 
 }
