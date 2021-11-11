@@ -15,8 +15,9 @@ import { MovieSynopsisComponent } from '../movie-synopsis/movie-synopsis.compone
 })
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
-  user: string | null = localStorage.getItem("user");
+  user: any[] = [];
   favorites: any[] = [];
+
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
@@ -38,9 +39,11 @@ export class MovieCardComponent implements OnInit {
   }
 
   getFavorites(): void {
-    this.fetchApiData.getUser(this.user).subscribe((results) => {
+
+    this.fetchApiData.getUser(this.user).subscribe((resp: any) => {
       //get favorites to the favorites array
-      this.favorites = results.Favorites;
+      this.favorites = resp.Favorites;
+      return this.favorites;
     })
   }
 
@@ -49,7 +52,8 @@ export class MovieCardComponent implements OnInit {
       width: "500px",
       //data will be passed to the Genre component
       data: {
-        Name, Description
+        genre: Name,
+        description: Description,
       }
     });
   }
@@ -59,7 +63,11 @@ export class MovieCardComponent implements OnInit {
     this.dialog.open(MovieDirectorComponent, {
       width: "500px",
       //data will be passed to the Director component
-      data: { Name, Bio, Birthyear }
+      data: {
+        name: Name,
+        bio: Bio,
+        birthyear: Birthyear,
+      }
     });
   }
 
@@ -68,7 +76,8 @@ export class MovieCardComponent implements OnInit {
       width: "500px",
       //data will be passed to the Synopsis component
       data: {
-        Title, Description
+        title: Title,
+        description: Description,
       }
     });
   }
@@ -92,7 +101,7 @@ export class MovieCardComponent implements OnInit {
     })
   }
 
-  setFavoriteStatus(Title: string): any {
+  setFavoriteStatus(Title: any): any {
     if (this.favorites.includes(Title)) {
       return true;
     } else {
