@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
@@ -47,7 +48,7 @@ export class UserLoginFormComponent implements OnInit {
 
 
       // to redirect 
-      this.snackBar.open(this.userData.Username, 'Welcome back!', {
+      this.snackBar.open(this.userData.Username, 'Welcome!', {
         duration: 3000
       });
       this.router.navigate(['movies']);
