@@ -32,6 +32,10 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: UserProfileComponent },
+  { path: 'genre', component: MovieGenreComponent },
+  { path: 'director', component: MovieDirectorComponent },
+  { path: 'synopsis', component: MovieSynopsisComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
