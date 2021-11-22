@@ -1,11 +1,11 @@
 <div class="director-container" style="display: flex;">
   <mat-card>
     <mat-card-header class="director-header">
-      <mat-card-title class="director-title">Director Name: {{director.Name}}</mat-card-title>
-      <mat-card-subtitle>Director Birthyear: {{director.Birthyear}}</mat-card-subtitle>
+      <mat-card-title class="director-title">Director's Name: {{data.name}}</mat-card-title>
+      <mat-card-subtitle class="director-birthyear">Birthyear: {{data.birthyear.slice(0,10)}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p>Director Bio: {{director.Bio}}</p>
+      <p class="director-bio">Bio: {{data.bio}}</p>
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button (click)="closeDialog()" color="primary">
