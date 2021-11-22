@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-login-form.component.scss']
 })
 export class UserLoginFormComponent implements OnInit {
-
+  isLoading = false;
   @Input() userData = { Username: '', Password: '' };
 
   constructor(
@@ -33,9 +33,9 @@ export class UserLoginFormComponent implements OnInit {
   }
   // This is the function responsible for sending the form inputs to the backend
   userLogin(): void {
-
+    this.isLoading = true;
     this.fetchApiData.userLogin(this.userData).subscribe((response) => {
-
+      this.isLoading = false;
       // Logic for successful user login
       this.dialogRef.close();
       console.log(response)
@@ -53,7 +53,7 @@ export class UserLoginFormComponent implements OnInit {
       });
       this.router.navigate(['movies']);
     }, (response) => {
-
+      this.isLoading = false;
       this.snackBar.open(response, 'OK', {
         duration: 3000
       });
