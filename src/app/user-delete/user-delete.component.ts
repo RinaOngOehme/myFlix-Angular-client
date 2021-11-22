@@ -24,6 +24,7 @@ export class UserDeleteComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
   }
 
 
@@ -31,29 +32,23 @@ export class UserDeleteComponent implements OnInit {
 
   //Permanently deletes account from the database
   deleteUser(): void {
-    this.fetchApiData.deleteUser(localStorage.getItem('username')).subscribe(
-      (resp: any) => {
+    this.fetchApiData.deleteUser(localStorage.getItem('username')).subscribe(() => {
 
-        this.snackBar.open(
-          'Your account has successfully been deleted!',
-          'OK',
-          {
-            duration: 4000,
-          }
-        );
-        // Logs user out
-        localStorage.clear();
-      },
-      (result) => {
-        this.snackBar.open(result, 'OK', {
-          duration: 4000,
-        });
+      this.dialogRef.close()
+      // Logs user out
+      localStorage.clear();
 
-        // Refreshes and redirects to welcome view
-        this.router.navigate(['/welcome']).then(() => {
-          window.location.reload();
-        });
-      }
+      // Refreshes and redirects to welcome view
+      this.router.navigate(['/welcome']);
+      this.snackBar.open(
+        'Your account has successfully been deleted!',
+        'OK',
+        {
+          duration: 3000,
+        }
+      );
+
+    }
     );
   }
 
