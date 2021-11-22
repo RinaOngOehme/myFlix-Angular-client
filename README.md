@@ -1,6 +1,24 @@
-# MyFlixAngularClient
+# Angular App (myFlix)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.12.
+
+## Project Objectives:
+Use angular to build the client-side for an application called myFlix based on its existing server-side code (REST API and database), with supporting documentation
+
+## Key Features:
+- The app will display a welcome view where users will be able to either log in or register an account
+- Once the user is authenticated, the user should be able to view all the movies in the existing database
+- User will be able to view director's details upon click on button Director of individual movie
+- User will be able to view genre's details upon click on button Genre of individual movie
+- User will be able to view synopsis upon click on button Synopsis of individual movie
+- User will be able to add movie to favorite's list upon click on the heart of individual movie card
+- User will be able to view and to edit user profile
+
+## Dependencies:
+- Angular
+- TypeScript
+- Angular Material
+- RxJS
 
 ## Development server
 
@@ -25,3 +43,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+#### Author: ####
+:camel: Rina Ong-Oehme
+
+#### Acknowledgements: ####
+Treasure Kabareebe
+
+
