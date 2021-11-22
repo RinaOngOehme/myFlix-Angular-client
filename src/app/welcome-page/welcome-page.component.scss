@@ -1,6 +1,6 @@
 
 .main-page { 
-  padding-top: 10%;  
+  padding: 10%;  
   text-align: center;
   color: solid black;  
   display: flex;
@@ -11,11 +11,12 @@
 }
 
 .main-container{
- border: 20px solid darkblue;
+ border: 15px solid darkblue;
  background-color: lightgray;
 }
 
 .logo {
+  margin-top: 10px;
   margin-left: 40px;
   width: 80%;
   height: 80%;
@@ -30,7 +31,7 @@
   color: black;
   margin-left: 100px;
   margin-top: 10px;
-  margin-bottom: 10px;  
+  margin-bottom: 20px;  
   padding: 10px;
   width: 50%;
   height: 10%;
