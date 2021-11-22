@@ -92,34 +92,7 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  //addFavoriteMovie(Title: string): void {
-  //  this.fetchApiData.addFavoriteMovie(Title).subscribe((res: any) => {
-  //    this.snackBar.open(`${Title} has been added to favorites`, 'OK', {
-  //      duration: 3000,
-  //    })
-  //    return this.getFavorites();
-  //  })
-  // }
 
-
-  // removeFavorites(Title: string): void {
-  //   this.fetchApiData.removeFavoriteMovie(Title).subscribe((res: any) => {
-  //     this.snackBar.open(`${Title} has been removed from favorites`, 'OK', {
-  //       duration: 3000,
-  //     })
-  //     window.location.reload();
-  //     return this.getFavorites();
-  //   })
-  // }
-
-  //setFavoriteStatus(Title: any): any {
-  //  if (this.faveMovies.includes(Title)) {
-  //    return true;
-  //  } else {
-  //    return false;
-  //  }
-  // }
-  //}
 
   // Add or remove movies from the Favorites list.
   onToggleFavoriteMovie(Title: string): any {
