@@ -38,7 +38,7 @@ export class UserDeleteComponent implements OnInit {
           'Your account has successfully been deleted!',
           'OK',
           {
-            duration: 3000,
+            duration: 4000,
           }
         );
         // Logs user out
@@ -46,7 +46,7 @@ export class UserDeleteComponent implements OnInit {
       },
       (result) => {
         this.snackBar.open(result, 'OK', {
-          duration: 3000,
+          duration: 4000,
         });
 
         // Refreshes and redirects to welcome view
