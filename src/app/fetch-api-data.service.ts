@@ -54,7 +54,7 @@ export class FetchApiDataService {
   //Get single movie from database
   getMovie(): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'movie/:title', {
+    return this.http.get(apiUrl + 'movies/:title', {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -107,25 +107,12 @@ export class FetchApiDataService {
     );
   }
 
-  //Get user details
-  getFavorites(user: any): Observable<any> {
-    const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'users/' + user, {
-      headers: new HttpHeaders(
-        {
-          Authorization: 'Bearer ' + token,
-        })
-    }).pipe(
-      map(this.extractResponseData),
-      catchError(this.handleError)
-    );
-  }
 
   //Add favorite movie to user
-  addFavoriteMovie(user: any): Observable<any> {
+  public addFavoriteMovie(Title: string): Observable<any> {
+    const user = localStorage.getItem('username');
     const token = localStorage.getItem('token');
-
-    return this.http.post(apiUrl + 'users/' + user + '/movie/:title', {
+    return this.http.post(apiUrl + 'users/' + user + '/movies/' + Title, {}, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -137,10 +124,10 @@ export class FetchApiDataService {
   }
 
   //Edit user details
-  updateUser(user: any): Observable<any> {
+  updateUser(user: any, username: any): Observable<any> {
     const token = localStorage.getItem('token');
 
-    return this.http.put(apiUrl + 'users/' + user, {
+    return this.http.put(apiUrl + 'users/' + username, user, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -167,10 +154,10 @@ export class FetchApiDataService {
   }
 
   //Remove favorite movie to user
-  removeFavoriteMovie(user: any): Observable<any> {
+  removeFavoriteMovie(Title: string): Observable<any> {
+    const user = localStorage.getItem('username');
     const token = localStorage.getItem('token');
-
-    return this.http.delete(apiUrl + 'users/' + user + '/movie/:title', {
+    return this.http.delete(apiUrl + 'users/' + user + '/movies/' + Title, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -182,7 +169,7 @@ export class FetchApiDataService {
   }
 
   // Non-typed response extraction
-  private extractResponseData(res: any | object): any {
+  private extractResponseData(res: any | Object): any {
     const body = res;
     return body || {};
   }
@@ -191,9 +178,10 @@ export class FetchApiDataService {
     if (error.error instanceof ErrorEvent) {
       console.error('Some error occurred:', error.error.message);
     } else {
+      console.log(error)
       console.error(
         `Error Status code ${error.status}, ` +
-        `Error body is: ${error.error}`);
+        `Error body is: ${error.error.message}`);
     }
     return throwError(
       'Something bad happened; please try again later.');
