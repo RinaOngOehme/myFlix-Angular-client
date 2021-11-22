@@ -14,9 +14,9 @@ export class MovieSynopsisComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA)
 
     public data: {
-      Title: string;
-      Description: string
-    },
+      title: string;
+      description: string
+    }
   ) { }
 
   ngOnInit(): void {
