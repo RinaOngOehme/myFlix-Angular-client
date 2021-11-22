@@ -5,11 +5,11 @@
       <mat-card-header class="mat-card-header">
         <mat-card-title>{{movie.Title}}</mat-card-title>
         <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
-        <mat-icon *ngIf="!setFavoriteStatus(movie.Title)" (click)="addFavoriteMovie(movie.Title)"
-          class="favorite-button">
-          favorite_border</mat-icon>
-        <mat-icon *ngIf="setFavoriteStatus(movie.Title)" (click)="removeFromFavorites(movie.Title)"
-          class="favorite-button-active">favorite</mat-icon>
+        <button mat-icon-button (click)="onToggleFavoriteMovie(movie.Title)">
+          <mat-icon color="warn" *ngIf="isFavorite(movie.Title)">favorite</mat-icon>
+          <mat-icon [ngStyle]="{'color':'gray'}" *ngIf="!isFavorite(movie.Title)">favorite_border
+          </mat-icon>
+        </button>
 
       </mat-card-header>
 
