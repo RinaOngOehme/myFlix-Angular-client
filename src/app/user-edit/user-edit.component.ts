@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit {
+  isLoading = false;
 
   @Input() userData = { Username: "", Password: "", Email: "", Birthday: "" }
 
@@ -22,15 +23,16 @@ export class UserEditComponent implements OnInit {
   }
 
   updateUser(): void {
+    let user = localStorage.getItem("username")
     //updates the user information in the database
-    this.fetchDataApi.updateUser(this.userData).subscribe(() => {
+    this.fetchDataApi.updateUser(this.userData, user).subscribe(() => {
       this.dialogRef.close();
-      this.snackBar.open("Your Account Is Now Updated!", "OK", {
+      this.snackBar.open("Account Updated!", "OK", {
         duration: 2000
       })
       //resets the user in local storage
-      localStorage.removeItem("user");
-      localStorage.setItem("user", this.userData.Username)
+      localStorage.removeItem("username");
+      localStorage.setItem("username", this.userData.Username)
       //refresh page to reflect changes made
       window.location.reload();
     }, (results) => {
@@ -44,5 +46,6 @@ export class UserEditComponent implements OnInit {
   cancel(): void {
     this.dialogRef.close();
   }
-
 }
+
+
