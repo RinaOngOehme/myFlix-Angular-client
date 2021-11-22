@@ -24,7 +24,7 @@ import { MovieDirectorComponent } from './movie-director/movie-director.componen
 import { MovieGenreComponent } from './movie-genre/movie-genre.component';
 import { MovieSynopsisComponent } from './movie-synopsis/movie-synopsis.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { UserFavoritesComponent } from './user-favorites/user-favorites.component';
+
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -33,6 +33,7 @@ const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
   { path: 'profile', component: UserProfileComponent },
+
   { path: 'genre', component: MovieGenreComponent },
   { path: 'director', component: MovieDirectorComponent },
   { path: 'synopsis', component: MovieSynopsisComponent },
@@ -51,7 +52,7 @@ const appRoutes: Routes = [
     MovieGenreComponent,
     MovieSynopsisComponent,
     UserProfileComponent,
-    UserFavoritesComponent,
+
     UserEditComponent,
     UserDeleteComponent,
     NavBarComponent
