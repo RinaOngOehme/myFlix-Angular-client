@@ -131,33 +131,6 @@ export class UserProfileComponent implements OnInit {
       this.favorites = res.FavoriteMovies;
     });
   }
-
-  /*  isFavorite(Title: string): boolean {
-     return this.favorites.includes(Title);
-   };
-  */
-
-  /* onToggleFavoriteMovie(Title: string): any {
-     if (this.isFavorite(Title)) {
-       this.fetchApiData.removeFavoriteMovie(Title).subscribe((res: any) => {
-        this.snackBar.open(`"${Title}" removed from your Favorites list!`,
-           'OK', {
-           duration: 2000,
-        });
-      });
-       const index = this.favorites.indexOf(Title);
-       return this.favorites.splice(index, 1);
-     } else {
-        this.fetchApiData.addFavoriteMovie(Title).subscribe((response: any) => {
-         this.snackBar.open(`"${Title}" added to your Favorites list!`,
-           'OK', {
-          duration: 2000,
-        });
-       });
-     }
-     return this.favorites.push(Title);
-      }
-   */
 }
 
 
