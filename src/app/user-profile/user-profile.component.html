@@ -7,7 +7,7 @@
     <p>Email: {{user.Email}}</p>
     <p>Birthday: {{user.Birthday}}</p>
     <h2 class="favemovietext-style">Favorite Movies: </h2>
-    <p class="fave-style">{{user.FavoriteMovies.join(', ')}}</p>
+    <p class="fave-style">{{user.FavoriteMovies.join(' | ')}}</p>
 
     <button mat-raised-button class="del-btn" (click)="openUserDelete()">
       Delete
