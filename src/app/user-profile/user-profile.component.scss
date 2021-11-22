@@ -1,56 +1,54 @@
 .user-profile {
+  border: 10px solid darkblue;
   display: flex;
-  flex-direction: column;
+  color: darkblue;
+  display: flex;
   margin-top: 20px;
-  margin-left: 25px;
-  margin-right: 25px;
-  flex-wrap: wrap;
-  align-items: center;
-  background-color: lightblue;
-  margin: 0 auto;
-  width:100%;
+  margin: auto; 
+  text-align: left;
+  align-items: left; 
+  flex-direction: column;
+  width:30%;
   padding: 20px;  
  
 }
 
+
+.favemovietext-style{
+  text-align: left;
+}
+
+.profiletext-style{
+  display: flex;
+}
+
 .del-btn{
-  margin-right: 5px;
-  background-color: red;
+  margin-right: 30px;
+  background-color: darkred;
   color: white;
   margin-top: 10px;
   align-items: center;
  text-align: center;
   width: 30%;
-  height: 20%;
+  height: 10%;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .edit-btn{
-  background-color: blue;
-  margin-right: 5px;
+  background-color: darkorange;
+ margin-right: 30px;
   color: white;
   margin-top: 10px;
   align-items: center;
   text-align: center;
   width: 30%;
-  height: 20%;
+  height: 10%;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
-.cancel-btn{
-  background-color: gray;
-  color: white;
-  margin-right: 10px;
-  margin-top: 10px;
-  align-items: center;
-  text-align: center;
-  width: 30%;
-  height: 20%;
-  justify-content: center;
-  margin-bottom: 30px;
-}
+
 
 .user-fav{
   display: flex;
@@ -63,3 +61,10 @@
   padding: 10px;  
  
 }
+
+
+.fave-style{
+  color: solid darkblue;
+  
+}
+
