@@ -46,10 +46,9 @@ export class UserProfileComponent implements OnInit {
   }
 
   filterFavorites(): void {
-
     this.movies.forEach((movie: any) => {
       if (this.user.FavoriteMovies.includes(movie.Title)) {
-        this.favorites.push(movie);
+        this.favorites.push(movie + ' ' + ' ');
       }
     });
     return this.favorites;
