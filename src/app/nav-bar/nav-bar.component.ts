@@ -23,18 +23,6 @@ export class NavBarComponent implements OnInit {
 
 
 
-  //  navProfile(): void {
-  //  this.router.navigate(['/profile'])
-  //  .then(success => console.log('navigation success?', success))
-  //.catch(console.error);
-  //}
-
-  // navMovies(): void {
-  // this.router.navigate(['/movies'])
-  // .then(success => console.log('navigation success?', success))
-  // .catch(console.error);
-  //}
-
   // Log out user
   navSignOut(): void {
     localStorage.clear();
