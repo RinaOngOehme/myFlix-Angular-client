@@ -1,11 +1,15 @@
-<mat-card-header class="movie-synopsis-header">
-  <mat-card-title class="movie-synopsis-title">Movie: {{data.Title}}</mat-card-title>
-</mat-card-header>
-<mat-card-content class="movie-synopsis-description">
-  <p>Description: {{data.Description}}</p>
-</mat-card-content>
-<mat-card-actions>
-  <button mat-raised-button (click)="closeDialog()" color="primary">
-    Close
-  </button>
-</mat-card-actions>
+<div class="synopsis-container" style="display: flex;">
+  <mat-card>
+    <mat-card-header class="movie-synopsis-header">
+      <mat-card-title class="movie-synopsis-title">Movie Title: {{data.title}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="movie-synopsis-description">
+      <p>Synopsis: {{data.description}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="closeDialog()" color="primary">
+        Close
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
