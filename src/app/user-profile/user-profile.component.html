@@ -1,10 +1,14 @@
 <app-nav-bar></app-nav-bar>
+
 <div class="user-profile">
-  <h2>Your Profile</h2>
   <div>
+    <h2 class="profiletext-style">Your Profile:</h2>
     <p>Username: {{user.Username}}</p>
     <p>Email: {{user.Email}}</p>
     <p>Birthday: {{user.Birthday}}</p>
+    <h2 class="favemovietext-style">Favorite Movies: </h2>
+    <p class="fave-style">{{user.FavoriteMovies}}</p>
+
     <button mat-raised-button class="del-btn" (click)="openUserDelete()">
       Delete
     </button>
@@ -12,9 +16,8 @@
       Edit
     </button>
 
+
+
+
+
   </div>
-  <div class="user-fav">
-    <h2>Your Favorite Movies</h2>
-    <app-user-favorites></app-user-favorites>
-  </div>
-</div>
