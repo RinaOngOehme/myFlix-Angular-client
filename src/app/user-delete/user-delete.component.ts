@@ -12,7 +12,11 @@ import { Router } from '@angular/router';
 export class UserDeleteComponent implements OnInit {
 
 
+
+
+
   constructor(
+    //allows use of http requests, router, dialog
     public dialogRef: MatDialogRef<UserDeleteComponent>,
     public fetchApiData: FetchApiDataService,
     public snackBar: MatSnackBar,
@@ -22,31 +26,41 @@ export class UserDeleteComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  dontDelete(): void {
-    this.dialogRef.close
-  }
 
 
 
+  //Permanently deletes account from the database
   deleteUser(): void {
-    this.fetchApiData.deleteUser(localStorage.getItem('username')).subscribe(() => {
-      //upon success, this code runs to navigate to welcome screen and close the dialog
-      this.dialogRef.close()
-      localStorage.clear();
-      this.router.navigate(['welcome']);
-      this.snackBar.open("Sorry That You Are Leaving Us, Your Account Has Been Deleted!", "OK", {
-        duration: 2000
-      })
-    },
-      //this code runs upon error, but http request may still succeed.
+    this.fetchApiData.deleteUser(localStorage.getItem('username')).subscribe(
+      (resp: any) => {
+
+        this.snackBar.open(
+          'Your account has successfully been deleted!',
+          'OK',
+          {
+            duration: 3000,
+          }
+        );
+        // Logs user out
+        localStorage.clear();
+      },
       (result) => {
-        this.snackBar.open(result, "OK", {
-          duration: 2000
-        })
-      })
+        this.snackBar.open(result, 'OK', {
+          duration: 3000,
+        });
+
+        // Refreshes and redirects to welcome view
+        this.router.navigate(['/welcome']).then(() => {
+          window.location.reload();
+        });
+      }
+    );
   }
 
-
+  //function to close dialog
+  dontDelete(): void {
+    this.dialogRef.close();
+  }
 
 
 }
