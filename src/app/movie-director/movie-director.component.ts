@@ -12,10 +12,10 @@ export class MovieDirectorComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<MovieDirectorComponent>,
     @Inject(MAT_DIALOG_DATA)
-    public director: {
-      Name: string;
-      Bio: string;
-      Birthyear: string;
+    public data: {
+      name: string;
+      bio: string;
+      birthyear: string;
     }
   ) { }
 
