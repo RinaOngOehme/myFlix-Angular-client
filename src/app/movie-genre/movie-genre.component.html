@@ -2,10 +2,10 @@
 
   <mat-card>
     <mat-card-header class="genre-header">
-      <mat-card-title class="genre-name">Genre: {{genre.Name}}</mat-card-title>
+      <mat-card-title class="genre-name">Genre: {{data.genre}}</mat-card-title>
     </mat-card-header>
     <mat-card-content class="genre-description">
-      <p>Description: {{genre.Description}}</p>
+      <p>Description: {{data.description}}</p>
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button (click)="closeDialog()" color="primary">
