@@ -16,9 +16,9 @@ export class MovieGenreComponent implements OnInit {
     public dialogRef: MatDialogRef<MovieGenreComponent>,
     @Inject(MAT_DIALOG_DATA)
 
-    public genre: {
-      Name: string;
-      Description: string;
+    public data: {
+      genre: string;
+      description: string;
     }
   ) { }
 
