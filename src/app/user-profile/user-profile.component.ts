@@ -6,6 +6,11 @@ import { Router } from '@angular/router';
 import { UserEditComponent } from '../user-edit/user-edit.component';
 import { UserDeleteComponent } from '../user-delete/user-delete.component';
 
+import { MovieGenreComponent } from '../movie-genre/movie-genre.component';
+import { MovieDirectorComponent } from '../movie-director/movie-director.component';
+import { MovieSynopsisComponent } from '../movie-synopsis/movie-synopsis.component';
+
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -32,28 +37,16 @@ export class UserProfileComponent implements OnInit {
   }
 
   getUser(): void {
-    const user = localStorage.getItem('user');
+    const user = localStorage.getItem('username');
     this.fetchApiData.getUser(user).subscribe((res: any) => {
 
       this.user = res;
-      this.getMovies();
-    });
-  }
-  //getUser(): void {
-  //  let user = localStorage.getItem('username');
-  //  this.fetchApiData.getUser(user).subscribe((response: any) => {
-  //    this.user = response;
-  //  });
-  //}
-
-  getMovies(): void {
-    this.fetchApiData.getAllMovies().subscribe((res: any) => {
-      this.movies = res;
-      this.filterFavorites();
+      this.user.Birthday = this.user.Birthday.slice(0, 10);
     });
   }
 
   filterFavorites(): void {
+
     this.movies.forEach((movie: any) => {
       if (this.user.FavoriteMovies.includes(movie.Title)) {
         this.favorites.push(movie);
@@ -62,19 +55,55 @@ export class UserProfileComponent implements OnInit {
     return this.favorites;
   }
 
-  removeFavorites(Title: string): void {
-    this.fetchApiData.removeFavoriteMovie(Title).subscribe(() => {
-      this.snackBar.open(`${Title} has been removed from your favorites!`, 'OK', {
-        duration: 2000
-      });
-      setTimeout(function () {
-        window.location.reload();
-      }, 2000);
+  getAllMovies(): void {
+
+    this.fetchApiData.getAllMovies().subscribe((res: any) => {
+
+      this.movies = res;
+      console.log(this.movies);
+      return this.filterFavorites(); // Calls the filter function when calling movies to show only favorites
+    });
+  }
+
+
+
+  openGenreDialog(Name: string, Description: string): void {
+    this.dialog.open(MovieGenreComponent, {
+      width: "500px",
+      //data will be passed to the Genre component
+      data: {
+        genre: Name,
+        description: Description,
+      }
+    });
+  }
+
+
+  openDirectorDialog(Name: string, Bio: string, Birthyear: any): void {
+    this.dialog.open(MovieDirectorComponent, {
+      width: "500px",
+      //data will be passed to the Director component
+      data: {
+        name: Name,
+        bio: Bio,
+        birthyear: Birthyear,
+      }
+    });
+  }
+
+  openSynopsisDialog(Title: string, Description: string): void {
+    this.dialog.open(MovieSynopsisComponent, {
+      width: "500px",
+      //data will be passed to the Synopsis component
+      data: {
+        title: Title,
+        description: Description,
+      }
     });
   }
   /**
-    * Opens dialog used to edit user information
-    */
+  * Opens dialog used to edit user information
+  */
   openUserEdit(): void {
     this.dialog.open(UserEditComponent, {
       width: "500px"
@@ -90,15 +119,51 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  //getFavorites(): void {
 
-  //this.fetchApiData.getUser(this.user).subscribe((response: any) => {
-  //get favorites to the favorites array
-  // this.favorites = response.Favorites;
-  // return this.favorites;
-  //})
-  //}
+  openBackToMovies(): void {
 
+    this.router.navigate(['/movies']);
 
+  }
+  //check for favorite movies under user's name
+  getFavorites(): void {
+    const user = localStorage.getItem('username');
+    this.fetchApiData.getUser(user).subscribe((res: any) => {
+      this.favorites = res.FavoriteMovies;
+    });
+  }
 
+  /*  isFavorite(Title: string): boolean {
+     return this.favorites.includes(Title);
+   };
+  */
+
+  /* onToggleFavoriteMovie(Title: string): any {
+     if (this.isFavorite(Title)) {
+       this.fetchApiData.removeFavoriteMovie(Title).subscribe((res: any) => {
+        this.snackBar.open(`"${Title}" removed from your Favorites list!`,
+           'OK', {
+           duration: 2000,
+        });
+      });
+       const index = this.favorites.indexOf(Title);
+       return this.favorites.splice(index, 1);
+     } else {
+        this.fetchApiData.addFavoriteMovie(Title).subscribe((response: any) => {
+         this.snackBar.open(`"${Title}" added to your Favorites list!`,
+           'OK', {
+          duration: 2000,
+        });
+       });
+     }
+     return this.favorites.push(Title);
+      }
+   */
 }
+
+
+
+
+
+
+
