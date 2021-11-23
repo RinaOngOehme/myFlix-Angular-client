@@ -24,6 +24,8 @@ export class UserProfileComponent implements OnInit {
   favorites: any = [];
 
 
+
+
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
@@ -126,13 +128,14 @@ export class UserProfileComponent implements OnInit {
   }
   //check for favorite movies under user's name
   getFavorites(): void {
+
     const user = localStorage.getItem('username');
     this.fetchApiData.getUser(user).subscribe((res: any) => {
-      this.favorites = res.FavoriteMovies;
+
+      this.favorites = res.FavoriteMovies
     });
   }
 }
-
 
 
 
