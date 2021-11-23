@@ -3,7 +3,8 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.12.
 
 ## Project Objectives:
-Use angular to build the client-side for an application called myFlix based on its existing server-side code (REST API and database), with supporting documentation
+Use angular to build the client-side for an application called myFlix based on its existing server-side code (REST API and database), with supporting documentation.
+
 ![movies png](src/assets/img/movies.png)
 
 ## Key Features:
