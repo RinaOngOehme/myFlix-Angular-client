@@ -4,6 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Project Objectives:
 Use angular to build the client-side for an application called myFlix based on its existing server-side code (REST API and database), with supporting documentation
+![movies png](src/assets/img/movies.png)
 
 ## Key Features:
 - The app will display a welcome view where users will be able to either log in or register an account
