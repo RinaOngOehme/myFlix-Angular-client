@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class UserDeleteComponent implements OnInit {
 
-
+  user: any = {};
 
 
 
@@ -27,35 +27,41 @@ export class UserDeleteComponent implements OnInit {
 
   }
 
-
-
-
-  //Permanently deletes account from the database
-  deleteUser(): void {
-    this.fetchApiData.deleteUser(localStorage.getItem('username')).subscribe(() => {
-
-      this.dialogRef.close()
-      // Logs user out
-      localStorage.clear();
-
-      // Refreshes and redirects to welcome view
-      this.router.navigate(['/welcome']);
-      this.snackBar.open(
-        'Your account has successfully been deleted!',
-        'OK',
-        {
-          duration: 3000,
-        }
-      );
-
-    }
-    );
-  }
-
   //function to close dialog
   dontDelete(): void {
     this.dialogRef.close();
   }
 
 
+  //Permanently deletes account from the database
+  deleteUser(): void {
+    this.fetchApiData.deleteUser(localStorage.getItem('username')).subscribe(() => {
+      this.snackBar.open(
+        'Your account has successfully been deleted!',
+        'OK',
+        {
+          duration: 20000
+        }
+      );
+
+      // Logs user out
+      localStorage.clear();
+    },
+      (res: any) => {
+        this.snackBar.open('Something went wrong, please try later.', 'Ok', {
+          duration: 20000
+        });
+        this.router.navigate(['/welcome']).then(() => {
+          window.location.reload();
+        });
+      }
+    );
+  }
 }
+
+
+
+
+
+
+
