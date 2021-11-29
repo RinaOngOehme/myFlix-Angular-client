@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
+
+//API call
 import { FetchApiDataService } from '../fetch-api-data.service';
+
+//Angular material
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -13,8 +17,14 @@ export class UserEditComponent implements OnInit {
 
   @Input() userData = { Username: "", Password: "", Email: "", Birthday: "" }
 
+  /**
+   *
+   * @param fetchApiData
+   * @param dialogRef
+   * @param snackBar
+   */
   constructor(
-    public fetchDataApi: FetchApiDataService,
+    public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserEditComponent>,
     public snackBar: MatSnackBar,
   ) { }
@@ -22,10 +32,15 @@ export class UserEditComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  /**
+   * Update user's username, password, email and birthday
+   * @param {object} user details
+   */
   updateUser(): void {
     let user = localStorage.getItem("username")
     //updates the user information in the database
-    this.fetchDataApi.updateUser(this.userData, user).subscribe(() => {
+    this.fetchApiData.updateUser(this.userData, user).subscribe(() => {
       this.dialogRef.close();
       this.snackBar.open("Account Updated!", "OK", {
         duration: 2000
@@ -43,6 +58,9 @@ export class UserEditComponent implements OnInit {
     })
   }
 
+  /**
+   * Cancel a dialog 
+   */
   cancel(): void {
     this.dialogRef.close();
   }
