@@ -1,11 +1,16 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+
+//API call
 import { FetchApiDataService } from '../fetch-api-data.service';
+
+//Angular material
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+
+// Components
 import { UserEditComponent } from '../user-edit/user-edit.component';
 import { UserDeleteComponent } from '../user-delete/user-delete.component';
-
 import { MovieGenreComponent } from '../movie-genre/movie-genre.component';
 import { MovieDirectorComponent } from '../movie-director/movie-director.component';
 import { MovieSynopsisComponent } from '../movie-synopsis/movie-synopsis.component';
@@ -24,7 +29,12 @@ export class UserProfileComponent implements OnInit {
   favorites: any = [];
 
 
-
+  /**
+   * @param fetchApiData
+   * @param dialog
+   * @param snackBar
+   * @param router
+   */
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -38,6 +48,9 @@ export class UserProfileComponent implements OnInit {
 
   }
 
+  /**
+   * Get user data which includes name, email and birthday
+   */
   getUser(): void {
     const user = localStorage.getItem('username');
     this.fetchApiData.getUser(user).subscribe((res: any) => {
@@ -46,6 +59,12 @@ export class UserProfileComponent implements OnInit {
       this.user.Birthday = this.user.Birthday.slice(0, 10);
     });
   }
+
+  /**
+   * Filters out user's list of favorites
+   * @param {string} movie_Title
+   * @returns {array} favourite_Movies
+   */
 
   filterFavorites(): void {
     this.movies.forEach((movie: any) => {
@@ -56,10 +75,13 @@ export class UserProfileComponent implements OnInit {
     return this.favorites;
   }
 
+  /**
+   * Gets all movies but filters out the user favorite movies
+   * @param {object} movies
+   * @returns {array} favourite_Movies
+   */
   getAllMovies(): void {
-
     this.fetchApiData.getAllMovies().subscribe((res: any) => {
-
       this.movies = res;
       console.log(this.movies);
       return this.filterFavorites(); // Calls the filter function when calling movies to show only favorites
@@ -67,7 +89,12 @@ export class UserProfileComponent implements OnInit {
   }
 
 
-
+  /**
+   * Opens modal with movie genre information
+   * @param {string} Description
+   * @param {string} Name   
+   *  
+   */
   openGenreDialog(Name: string, Description: string): void {
     this.dialog.open(MovieGenreComponent, {
       width: "500px",
@@ -79,7 +106,13 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-
+  /**
+   * Opens modal with movie director information that includes name, bio and birthyear
+   * @param {string} Name
+   * @param {string} Bio
+   * @param {string} Birthyear
+   * 
+   */
   openDirectorDialog(Name: string, Bio: string, Birthyear: any): void {
     this.dialog.open(MovieDirectorComponent, {
       width: "500px",
@@ -92,6 +125,11 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens modal with movie synopsis information
+   * @param {string} movie_Description
+   * @param {string} movie_Title
+   */
   openSynopsisDialog(Title: string, Description: string): void {
     this.dialog.open(MovieSynopsisComponent, {
       width: "500px",
@@ -102,9 +140,10 @@ export class UserProfileComponent implements OnInit {
       }
     });
   }
+
   /**
-  * Opens dialog used to edit user information
-  */
+   * Opens dialog component used to edit user information
+   */
   openUserEdit(): void {
     this.dialog.open(UserEditComponent, {
       width: "500px"
@@ -112,7 +151,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   /**
-   * Opens dialog used to delete a user account
+   * Opens dialog component used to delete a user account
    */
   openUserDelete(): void {
     this.dialog.open(UserDeleteComponent, {
@@ -121,12 +160,9 @@ export class UserProfileComponent implements OnInit {
   }
 
 
-  openBackToMovies(): void {
-
-    this.router.navigate(['/movies']);
-
-  }
-  //check for favorite movies under user's name
+  /**
+   * Gets user favorite movies
+   */
   getFavorites(): void {
 
     const user = localStorage.getItem('username');
