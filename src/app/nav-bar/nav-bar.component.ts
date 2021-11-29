@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+//Angular material
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
@@ -12,6 +14,10 @@ export class NavBarComponent implements OnInit {
 
   user: any;
 
+  /**
+   * @param snackBar
+   * @param router
+   */
   constructor(
     public snackBar: MatSnackBar,
     public router: Router,
@@ -23,7 +29,9 @@ export class NavBarComponent implements OnInit {
 
 
 
-  // Log out user
+  /**
+   * Log out user
+   */
   navSignOut(): void {
     localStorage.clear();
 
