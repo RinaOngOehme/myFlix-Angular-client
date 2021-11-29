@@ -14,7 +14,12 @@ export class UserDeleteComponent implements OnInit {
   user: any = {};
 
 
-
+  /** 
+   * @param fetchApiData
+   * @param dialog
+   * @param snackBar
+   * @param router
+   */
   constructor(
     //allows use of http requests, router, dialog
     public dialogRef: MatDialogRef<UserDeleteComponent>,
@@ -27,13 +32,16 @@ export class UserDeleteComponent implements OnInit {
 
   }
 
-  //function to close dialog
+  /**
+   * Cancel a dialog to not delete user
+   */
   dontDelete(): void {
     this.dialogRef.close();
   }
 
-
-  //Permanently deletes account from the database
+  /**
+   * Delete user 
+   */
   deleteUser(): void {
     this.fetchApiData.deleteUser(localStorage.getItem('username')).subscribe(() => {
       this.snackBar.open(
